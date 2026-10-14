@@ -1,6 +1,0 @@
-# SZABLON — nieaktywny. Zastąpić nim /robots.txt wyłącznie przy zatwierdzonej publikacji.
-# Równocześnie zdjąć noindex z sześciu stron wymienionych w sitemap.xml.
-User-agent: *
-Allow: /
-
-Sitemap: https://formawww.pl/sitemap.xml

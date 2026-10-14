@@ -28,3 +28,9 @@ dist/
 # Artefakty lokalnej kontroli Python (skrypt audytu nie jest zależnością strony)
 __pycache__/
 *.py[cod]
+
+docs/
+scripts/
+metamorfozy.html
+realizacje.html
+favicon.svg
