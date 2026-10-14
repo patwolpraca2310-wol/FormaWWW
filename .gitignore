@@ -1,0 +1,30 @@
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Lokalne ustawienia edytorów
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Lokalne sekrety i konfiguracja środowiska
+.env
+.env.*
+!.env.example
+
+# Logi, pliki tymczasowe i pamięć podręczna
+*.log
+.cache/
+tmp/
+
+# Ewentualne przyszłe narzędzia — obecnie projekt nie ma zależności
+node_modules/
+dist/
+.wrangler/
+
+# Artefakty lokalnej kontroli Python (skrypt audytu nie jest zależnością strony)
+__pycache__/
+*.py[cod]

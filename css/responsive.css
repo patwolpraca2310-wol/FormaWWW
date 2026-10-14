@@ -1,0 +1,703 @@
+/* The approved scene stays intact. Smaller screens get a deliberate type hierarchy. */
+@media (min-width: 1700px) {
+  .hero { height: 920px; }
+  .hero-object { width: 850px; top: 95px; }
+}
+@media (max-width: 1200px) {
+  .site-nav { gap: 24px; }
+  .site-nav .nav-contact { margin-left: 0; }
+  .site-nav > a { font-size: 11px; }
+  .hero { min-height: 720px; }
+  .hero-intro { top: 144px; font-size: 16px; }
+  .hero-intro > span { font-size: 13px; }
+  .hero-object { width: 670px; top: 94px; }
+  .hero h1 { font-size: 5.7vw; }
+  .hero-title-wrap { bottom: 197px; }
+  .hero-consultation { bottom: 78px; }
+  .hero-discover { bottom: 75px; }
+  .hero-bottom-note { display: none; }
+  .offer-layout { gap: 9%; }
+  .offer { padding-block: 85px; }
+  .transform-top { gap: 35px; }
+  .transform-top > p { max-width: 280px; }
+  .quality-composition, .collaboration { gap: 7%; grid-template-columns: 1fr 1.22fr; }
+  .quality-sheet { padding: 35px; }
+  .quality-notes { gap: 23px; }
+  .quality-heading h2 { font-size: 5.2vw; }
+  .story-lead { font-size: 2.8vw; }
+}
+@media (max-width: 900px) {
+  :root { --gutter: 32px; }
+  .site-header { position: relative; background: #182920; }
+  .header-inner { flex-wrap: wrap; gap: 0; min-height: 80px; padding-block: 11px; }
+  .wordmark { font-size: 27px; }
+  .site-nav { flex-basis: 100%; flex-wrap: wrap; gap: 0 24px; padding-block: 8px; }
+  .site-nav > a { font-size: 12px; }
+  .js-enabled .site-header { position: absolute; }
+  .js-enabled .menu-toggle { display: flex; }
+  .js-enabled .site-nav { display: none; }
+  .js-enabled .site-nav.is-open { display: flex; flex-direction: column; align-items: stretch; padding-block: 12px; }
+  .js-enabled .site-header:has(.site-nav.is-open) { box-shadow: 0 20px 30px #0b1a1433; }
+  .site-nav .nav-contact { justify-content: space-between; }
+  .hero { height: 820px; min-height: 820px; }
+  .hero-intro { top: 123px; font-size: 15px; }
+  .hero-intro > span { font-size: 12px; }
+  .hero-object { width: 560px; top: 157px; }
+  .hero-title-wrap { bottom: 210px; }
+  .hero h1 { font-size: clamp(44px, 7.2vw, 63px); line-height: 1.08; }
+  .hero-consultation { bottom: 89px; }
+  .hero-discover { bottom: 98px; font-size: 11px; }
+  .hero-echo { display: none; }
+  .surface { border-radius: 28px 28px 0 0; margin-top: -28px; }
+  .offer-layout { grid-template-columns: .78fr 1.22fr; gap: 8%; }
+  .offer-intro h2 { font-size: 28px; }
+  .offer-intro > p { font-size: 14px; max-width: 260px; }
+  .service.primary-service h3 { font-size: 36px; }
+  .service h3 { font-size: 21px; }
+  .service-content > p { font-size: 14px; }
+  .service-content .inline-link { gap: 12px; font-size: 12px; }
+  .service-toggle { width: 20px; flex-basis: 20px; }
+  .transformation { padding-block: 75px 62px; }
+  .transform-top { display: block; }
+  .transform-top h2 { font-size: 40px; }
+  .transform-top > p { max-width: 470px; margin-top: 28px; font-size: 14px; }
+  .transformation-experience { margin-top: 38px; }
+  .layout-stage { height: 390px; }
+  .layout-canvas { width: 610px; left: calc(50% - 305px); height: 330px; top: 38px; }
+  .piece-title { width: 440px; font-size: 52px; }
+  .piece-copy { left: 300px; top: 202px; width: 270px; font-size: 13px; }
+  .piece-contact { top: 190px; width: 257px; font-size: 14px; padding-left: 22px; }
+  .piece-context { width: 100px; padding-left: 18px; top: 20px; font-size: 12px; }
+  #layout-before:checked ~ .layout-stage .piece-title { transform: translate(90px,72px) scale(.68); }
+  #layout-before:checked ~ .layout-stage .piece-copy { transform: translate(-277px,-162px) rotate(-5deg) scale(1.2); }
+  #layout-before:checked ~ .layout-stage .piece-contact { transform: translate(347px,100px) scale(.78); }
+  #layout-before:checked ~ .layout-stage .piece-context { transform: translate(-305px,183px) rotate(3deg) scale(1.2); }
+  .transform-bottom { margin-top: 35px; }
+  .transform-bottom > p { font-size: 19px; }
+  .transform-bottom .inline-link { font-size: 12px; }
+  .approach { padding-block: 88px 75px; border-radius: 0 0 45px 45px; }
+  .quality-composition { grid-template-columns: 1fr; gap: 55px; }
+  .quality-heading { display: flex; justify-content: space-between; gap: 40px; align-items: end; padding: 0; }
+  .quality-heading h2 { font-size: 47px; }
+  .quality-heading > p { font-size: 14px; margin: 0 0 10px; max-width: 245px; }
+  .quality-sheet { margin-left: 15%; padding: 36px; }
+  .quality-main h3 { font-size: 31px; }
+  .quality-notes dt, .quality-notes dd { font-size: 13px; }
+  .collaboration { margin-top: 80px; grid-template-columns: 1fr 1.2fr; gap: 35px; }
+  .collaboration-title h2 { font-size: 29px; }
+  .story-lead { font-size: 26px; }
+  .process-details summary { font-size: 13px; }
+  .faq { gap: 40px; padding-block: 80px; }
+  .faq-intro h2 { font-size: 31px; }
+  .faq-list summary { font-size: 14px; }
+  .finale { min-height: 560px; border-radius: 45px 45px 0 0; padding-block: 70px; }
+  .finale h2 { font-size: 51px; }
+  .finale-orbit { width: 850px; left: -310px; bottom: -310px; }
+  .footer-top { gap: 30px; }
+  .footer-top nav { gap: 18px; }
+  .footer-contact { gap: 35px; }
+  .footer-contact > a:not(.back-top) { font-size: 16px; }
+}
+@media (max-width: 600px) {
+  :root { --gutter: 23px; }
+  html { scroll-padding-top: 20px; }
+  .header-inner { min-height: 76px; }
+  .wordmark { font-size: 25px; }
+  .hero { height: 850px; min-height: 850px; }
+  .hero::before { background: radial-gradient(ellipse at 60% 38%, #465e39, #182920 66%); }
+  .hero::after { height: 39%; background: linear-gradient(transparent, #15261be6 57%, #14251b); }
+  .hero-intro { top: 105px; left: var(--gutter); font-size: 14px; line-height: 1.7; }
+  .hero-intro > span { display: block; margin-top: 2px; font-size: 12px; }
+  .hero-intro br { display: none; }
+  .hero-object { width: 470px; max-width: none; top: 139px; left: calc(50% - 250px); translate: none; }
+  .hero-title-wrap { left: var(--gutter); right: var(--gutter); bottom: 226px; text-align: left; }
+  .hero h1 { font-size: clamp(36px, 9.55vw, 52px); line-height: 1.15; letter-spacing: -.055em; }
+  .hero h1 > span { display: block; margin-top: 4px; }
+  .hero-title-wrap h1 br { display: none; }
+  .hero-consultation { left: var(--gutter); right: var(--gutter); bottom: 112px; }
+  .consultation { font-size: 14px; padding: 11px 11px 11px 25px; gap: 20px; }
+  .action-circle { width: 55px; height: 55px; flex-basis: 55px; }
+  .hero-discover { bottom: 47px; left: var(--gutter); font-size: 11px; gap: 14px; }
+  .surface { margin-top: -20px; border-radius: 25px 25px 0 0; }
+
+  /* Offer first: a quiet introduction, then two clearly dominant service choices. */
+  .offer { padding-block: 65px 72px; }
+  .offer-layout { grid-template-columns: 1fr; gap: 43px; }
+  .offer-intro { padding: 0; }
+  .offer-intro h2 { font-size: 25px; line-height: 1.28; max-width: 270px; letter-spacing: -.035em; }
+  .offer-intro > p { font-size: 14px; line-height: 1.8; max-width: 34ch; margin-top: 20px; }
+  .service-prompt { font-size: 12px; margin-bottom: 7px; }
+  .service.primary-service h3 { font-size: 31px; line-height: 1.2; letter-spacing: -.045em; }
+  .service h3 { font-size: 20px; line-height: 1.35; letter-spacing: -.025em; }
+  .service summary { gap: 20px; padding-block: 23px; }
+  .primary-service summary { padding-block: 25px; }
+  .service-content { padding-bottom: 29px; max-width: 34ch; }
+  .service-content > p { font-size: 15px; line-height: 1.8; }
+  .service-content .service-subtitle { font-size: 12px; line-height: 1.65; margin-bottom: 14px; }
+  .service-content .inline-link { font-size: 13px; line-height: 1.6; margin-top: 17px; }
+
+  .transformation { padding-block: 66px 59px; }
+  .transform-top h2 { font-size: clamp(28px, 7.7vw, 39px); line-height: 1.22; letter-spacing: -.045em; }
+  .transform-top h2 span { display: block; margin-top: 10px; }
+  .transform-top > p { font-size: 15px; line-height: 1.8; max-width: 35ch; margin-top: 28px; }
+  .transformation-experience { width: 100%; margin-top: 40px; }
+  .demo-switch legend { font-size: 12px; margin-bottom: 16px; }
+  .demo-switch > label { padding: 12px 19px; min-height: 46px; font-size: 12px; gap: 9px; }
+  .demo-switch > label + input + label { margin-left: 2px; }
+  .layout-stage { margin-top: 28px; height: 385px; }
+  .layout-trace { width: 720px; left: -280px; opacity: .09; }
+  .layout-canvas { width: min(300px, calc(100% - 46px)); left: 50%; translate: -50% 0; top: 20px; height: 350px; }
+  .piece-title { top: 6px; left: 0; width: 100%; font-size: 36px; line-height: 1.15; letter-spacing: -.045em; }
+  .piece-copy { top: 116px; left: 0; width: 100%; font-size: 14px; line-height: 1.8; }
+  .piece-contact { top: 204px; left: 0; width: 100%; font-size: 14px; min-height: 68px; padding: 10px 10px 10px 23px; }
+  .piece-arrow { width: 48px; height: 48px; font-size: 23px; }
+  .piece-context { top: 304px; left: 0; right: auto; width: 100%; padding: 0; border: 0; display: flex; gap: 23px; font-size: 11px; }
+  #layout-before:checked ~ .layout-stage .piece-title { transform: translate(37px,119px) scale(.75); }
+  #layout-before:checked ~ .layout-stage .piece-copy { transform: translate(2px,-95px) rotate(-4deg) scale(1.04); }
+  #layout-before:checked ~ .layout-stage .piece-contact { transform: translate(77px,80px) scale(.72); }
+  #layout-before:checked ~ .layout-stage .piece-context { transform: translate(12px,-211px) rotate(3deg) scale(1.09); }
+  .demo-explanation { margin: 16px var(--gutter) 0; font-size: 14px; min-height: 70px; max-width: none; }
+  .demo-caption { margin: 15px var(--gutter) 0; font-size: 11px; line-height: 1.8; }
+  .transform-bottom { display: block; margin-top: 35px; }
+  .transform-bottom > p { font-size: 19px; line-height: 1.5; }
+  .transform-bottom .inline-link { margin-top: 18px; font-size: 13px; gap: 14px; }
+
+  /* A shorter display heading, followed by a distinctly smaller reading layer. */
+  .approach { padding-block: 72px 70px; border-radius: 0 0 30px 30px; }
+  .quality-composition { gap: 49px; }
+  .quality-heading { display: block; }
+  .quality-heading h2 { font-size: 34px; max-width: 300px; line-height: 1.16; letter-spacing: -.045em; }
+  .quality-heading h2 br { display: none; }
+  .quality-heading h2 > span { margin-top: 8px; }
+  .quality-heading > p { max-width: 33ch; font-size: 15px; line-height: 1.8; margin-top: 24px; }
+  .quality-heading > p br { display: none; }
+  .quality-sheet { margin: 0 1px 0 8px; padding: 31px 25px 38px; border-bottom-right-radius: 50px; }
+  .quality-sheet::before { inset: -9px 9px 0 -6px; transform: rotate(-3deg); }
+  .quality-main h3 { font-size: 25px; line-height: 1.3; letter-spacing: -.035em; }
+  .quality-spark { font-size: 34px; }
+  .quality-notes { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
+  .quality-notes dt { font-size: 14px; margin-bottom: 8px; }
+  .quality-notes dd { font-size: 14px; line-height: 1.8; max-width: 33ch; }
+  .collaboration { grid-template-columns: 1fr; gap: 32px; margin-top: 80px; }
+  .collaboration-title h2 { font-size: 27px; max-width: 280px; line-height: 1.25; letter-spacing: -.035em; }
+  .collaboration-title p { font-size: 14px; line-height: 1.8; margin-top: 20px; }
+  .story-lead { font-size: clamp(21px, 5.8vw, 27px); line-height: 1.65; letter-spacing: -.03em; }
+  .process-details { margin-top: 25px; }
+  .process-details summary { font-size: 13px; }
+  .process-content { padding-left: 18px; }
+  .process-content h3 { font-size: 18px; line-height: 1.35; }
+  .process-content p { font-size: 14px; line-height: 1.8; }
+
+  .faq { grid-template-columns: 1fr; gap: 35px; padding-block: 71px 76px; }
+  .faq-intro h2 { font-size: 28px; line-height: 1.23; letter-spacing: -.035em; }
+  .faq-intro p { font-size: 14px; margin-top: 20px; }
+  .faq-list summary { font-size: 14px; line-height: 1.7; gap: 18px; padding-block: 22px; }
+  .faq-list details > p { font-size: 14px; line-height: 1.8; padding-right: 8px; }
+  .finale { padding-block: 78px 60px; min-height: 610px; border-radius: 30px 30px 0 0; }
+  .finale-content { width: 100%; }
+  .finale h2 { font-size: clamp(34px, 9.4vw, 49px); line-height: 1.2; letter-spacing: -.045em; }
+  .finale h2 span { display: block; margin-top: 9px; }
+  .finale .consultation { width: 100%; margin-top: 35px; }
+  .finale-content > p { font-size: 14px; line-height: 1.8; max-width: 29ch; margin: 28px auto 0; }
+  .finale-content > p br { display: none; }
+  .finale-orbit { width: 780px; left: -357px; bottom: -325px; opacity: .15; }
+
+  .site-footer { padding-block: 31px 25px; }
+  .footer-top { display: block; }
+  .footer-top nav { margin-top: 22px; gap: 0 24px; }
+  .footer-top nav a { font-size: 12px; }
+  .footer-contact { display: grid; grid-template-columns: 1fr 44px; gap: 15px 10px; padding-block: 27px; }
+  .footer-contact > a:not(.back-top) { font-size: 16px; letter-spacing: -.02em; min-height: 35px; align-content: center; overflow-wrap: anywhere; }
+  .footer-contact > a:first-child { grid-column: 1 / -1; }
+  .back-top { grid-column: 2; grid-row: 2; }
+  .footer-bottom { font-size: 9px; gap: 15px; }
+}
+@media (max-width: 360px) {
+  :root { --gutter: 18px; }
+  .hero { min-height: 830px; height: 830px; }
+  .hero-object { width: 435px; left: calc(50% - 232px); top: 153px; }
+  .hero-intro { font-size: 13px; }
+  .hero-intro > span { font-size: 11px; }
+  .hero h1 { font-size: 33px; }
+  .hero-title-wrap { bottom: 220px; }
+  .consultation { font-size: 13px; padding-left: 22px; }
+  .action-circle { width: 51px; height: 51px; flex-basis: 51px; }
+  .offer-intro h2 { font-size: 24px; }
+  .service.primary-service h3 { font-size: 28px; }
+  .service h3 { font-size: 19px; }
+  .transform-top h2 { font-size: 28px; }
+  .demo-switch > label { font-size: 11px; padding-inline: 17px; }
+  .layout-canvas { width: calc(100% - 44px); }
+  .piece-title { font-size: 32px; }
+  .piece-copy { font-size: 13px; }
+  #layout-before:checked ~ .layout-stage .piece-title { transform: translate(28px,119px) scale(.75); }
+  #layout-before:checked ~ .layout-stage .piece-contact { transform: translate(64px,80px) scale(.72); }
+  .demo-explanation { min-height: 75px; font-size: 13px; }
+  .quality-heading h2 { font-size: 31px; }
+  .quality-main h3 { font-size: 23px; }
+  .quality-main { gap: 12px; }
+  .quality-spark { font-size: 29px; }
+  .quality-sheet { padding-inline: 21px; }
+  .collaboration-title h2, .faq-intro h2 { font-size: 26px; }
+  .story-lead { font-size: 21px; }
+  .finale h2 { font-size: 33px; }
+  .footer-contact > a:not(.back-top) { font-size: 14px; }
+}
+@media print {
+  .site-header { position: static !important; background: var(--ink); }
+  .menu-toggle, .skip-link { display: none !important; }
+  .site-nav { display: flex !important; }
+  .hero, .finale { break-inside: avoid; }
+  .offer, .approach, .faq { padding-block: 40px; }
+  .hero-object { animation: none; }
+}
+
+/* OFERTA responsive layer. No selectors here affect the homepage. */
+@media (max-width: 1200px) {
+  .offer-page .of-opening-ribbon { left: -180px; width: calc(70% + 145px); top: 26px; }
+  .offer-page .of-opening-space > p { width: 30%; font-size: 14px; }
+  .offer-page .of-new-heading, .offer-page .of-brief { gap: 7%; }
+  .offer-page .of-brief-scope { padding: 37px 33px; }
+  .offer-page .of-renovation-heading { gap: 0 40px; grid-template-columns: 1.15fr .85fr; }
+  .offer-page .of-renovation-body { gap: 7%; grid-template-columns: .8fr 1.2fr; }
+  .offer-page .of-fragment-main { padding: 22px; }
+  .offer-page .of-fragment-main > span { font-size: 32px; }
+  .offer-page .of-fragment-text { padding: 24px; }
+  .offer-page .of-fragment-nav, .offer-page .of-fragment-contact { padding-inline: 14px; font-size: 11px; }
+  .offer-page .of-content-actions > div { grid-template-columns: 1fr; gap: 11px; }
+  .offer-page .of-finale-inner { grid-template-columns: 1.25fr .75fr; gap: 35px; }
+}
+@media (max-width: 900px) {
+  .offer-page .site-header { position: relative; background: var(--paper); }
+  .offer-page .of-opening { padding-top: 25px; }
+  .offer-page .of-breadcrumb { margin-bottom: 28px; }
+  .offer-page .of-opening h1 { font-size: clamp(43px, 6.4vw, 57px); line-height: 1.12; }
+  .offer-page .of-opening-space { min-height: 215px; }
+  .offer-page .of-opening-space > p { width: 36%; }
+  .offer-page .of-opening-ribbon { width: calc(64% + 235px); left: -270px; top: 60px; }
+  .offer-page .of-entries a { padding: 25px 27px; min-height: 121px; font-size: 14px; gap: 18px; }
+  .offer-page .of-entries strong { font-size: 25px; }
+  .offer-page .of-other-link { text-align: left; }
+  .offer-page .of-new { padding-top: 36px; padding-bottom: 85px; }
+  .offer-page .of-new-heading { gap: 7%; grid-template-columns: 1fr 1fr; align-items: start; }
+  .offer-page .of-service-name { font-size: 12px; margin-bottom: 20px; }
+  .offer-page .of-new-heading h2 { font-size: 40px; }
+  .offer-page .of-new-for h3 { font-size: 21px; }
+  .offer-page .of-new-for > p { font-size: 14px; }
+  .offer-page .of-brief { gap: 8%; margin-top: 45px; }
+  .offer-page .of-brief-scope { padding: 32px 25px; }
+  .offer-page .of-brief h3 { font-size: 22px; }
+  .offer-page .of-scope-list li { font-size: 14px; }
+  .offer-page .of-brief-statement { font-size: 33px; margin-bottom: 30px; }
+  .offer-page .of-brief-result > p:last-child { font-size: 14px; }
+  .offer-page .of-new-work { gap: 8%; margin-top: 57px; }
+  .offer-page .of-new-work h3 { font-size: 26px; }
+  .offer-page .of-new-work > div > p { font-size: 14px; }
+  .offer-page .of-new-work .inline-link { font-size: 12px; gap: 12px; }
+  .offer-page .of-workflow { padding-left: 22px; }
+  .offer-page .of-workflow dt { font-size: 15px; }
+  .offer-page .of-workflow dd { font-size: 13px; }
+  .offer-page .of-renovation { padding-block: 70px; border-radius: 36px 0 0 0; }
+  .offer-page .of-renovation-heading { display: block; }
+  .offer-page .of-renovation-heading h2 { font-size: 49px; }
+  .offer-page .of-renovation-heading > p:last-child { margin-top: 28px; max-width: 560px; font-size: 15px; }
+  .offer-page .of-renovation-body { grid-template-columns: 1fr; gap: 48px; margin-top: 42px; }
+  .offer-page .of-review { max-width: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
+  .offer-page .of-review h3 { margin: 0; font-size: 21px; }
+  .offer-page .of-review h3:not(:first-child) { margin: 0; grid-column: 2; grid-row: 1; }
+  .offer-page .of-review > p { font-size: 14px; }
+  .offer-page .of-review > p:first-of-type { grid-column: 1; grid-row: 2; }
+  .offer-page .of-review > .of-review-principle { grid-column: 1 / -1; font-size: 20px; margin-top: 8px; }
+  .offer-page .of-review-principle br { display: none; }
+  .offer-page .of-scope-demo { width: 100%; max-width: 570px; margin-inline: auto; }
+  .offer-page .of-fragment-main { padding: 28px; }
+  .offer-page .of-fragment-main > span { font-size: 36px; }
+  .offer-page .of-fragment-nav, .offer-page .of-fragment-contact { font-size: 12px; }
+  .offer-page .of-renovation-paths { margin-top: 40px; gap: 7%; }
+  .offer-page .of-renovation-paths h3 { font-size: 23px; }
+  .offer-page .of-continuity { padding-block: 74px 80px; }
+  .offer-page .of-continuity-title { font-size: 48px; width: 50%; }
+  .offer-page .of-continuity-intro > p:first-child { font-size: 15px; max-width: 260px; }
+  .offer-page .of-care { grid-template-columns: 1fr 1.2fr; gap: 8%; }
+  .offer-page .of-care h2 { font-size: 34px; }
+  .offer-page .of-care-copy > p:first-child { font-size: 15px; }
+  .offer-page .of-seo { margin-top: 65px; padding: 45px 32px 40px; border-radius: 36px 0 0 4px; }
+  .offer-page .of-seo h2 { font-size: 33px; }
+  .offer-page .of-seo-columns { gap: 35px; }
+  .offer-page .of-seo-columns h3 { font-size: 20px; }
+  .offer-page .of-content { margin-top: 67px; grid-template-columns: .95fr 1.05fr; gap: 8%; }
+  .offer-page .of-content h2 { font-size: 37px; }
+  .offer-page .of-content-intro p { font-size: 14px; }
+  .offer-page .of-content-actions dt { font-size: 24px; }
+  .offer-page .of-content-actions dd { font-size: 13px; }
+  .offer-page .of-finale { padding-block: 84px 76px; }
+  .offer-page .of-finale-inner { grid-template-columns: 1fr; gap: 30px; }
+  .offer-page .of-finale h2 { font-size: 51px; }
+  .offer-page .of-finale p { font-size: 15px; }
+  .offer-page .of-finale .consultation { justify-self: start; }
+}
+@media (max-width: 600px) {
+  .offer-page .of-opening { padding-top: 17px; padding-bottom: 46px; }
+  .offer-page .of-breadcrumb { font-size: 11px; margin-bottom: 26px; }
+  .offer-page .of-opening h1 { font-size: clamp(32px, 9.2vw, 48px); line-height: 1.14; letter-spacing: -.045em; }
+  .offer-page .of-opening-space { display: block; min-height: 0; padding: 25px 0 92px; }
+  .offer-page .of-opening-space > p { padding: 0; width: 100%; max-width: 34ch; font-size: 15px; line-height: 1.8; }
+  .offer-page .of-opening-ribbon { width: 390px; left: calc(50% - 150px); top: auto; bottom: -15px; }
+  .offer-page .of-entries { grid-template-columns: 1fr; border-radius: 28px 4px 28px 4px; }
+  .offer-page .of-entries a { min-height: 89px; padding: 20px 25px; gap: 22px; font-size: 13px; }
+  .offer-page .of-entries a:first-child { border-radius: 28px 4px 0 0; }
+  .offer-page .of-entries a + a { border-left: 0; border-top: 1px solid #62745c; border-radius: 0 0 28px 4px; }
+  .offer-page .of-entries strong { font-size: 23px; line-height: 1.3; }
+  .offer-page .of-entries .icon { width: 24px; height: 24px; flex-basis: 24px; }
+  .offer-page .of-other-link { font-size: 12px; margin-top: 22px; line-height: 1.8; }
+  .offer-page .of-other-link a { display: flex; margin-left: 0; gap: 10px; }
+  .offer-page .of-new { padding-block: 35px 72px; }
+  .offer-page .of-new-heading { grid-template-columns: 1fr; gap: 29px; }
+  .offer-page .of-service-name { font-size: 12px; margin-bottom: 19px; }
+  .offer-page .of-new-heading h2 { font-size: 34px; line-height: 1.17; letter-spacing: -.045em; }
+  .offer-page .of-new-for h3 { font-size: 21px; max-width: 30ch; line-height: 1.4; margin-bottom: 17px; }
+  .offer-page .of-new-for > p { font-size: 15px; line-height: 1.8; max-width: 35ch; }
+  .offer-page .of-brief { grid-template-columns: 1fr; gap: 39px; margin-top: 37px; }
+  .offer-page .of-brief-scope { margin-right: -8px; padding: 32px 25px 33px; border-top-right-radius: 39px; }
+  .offer-page .of-brief h3 { font-size: 22px; line-height: 1.35; }
+  .offer-page .of-scope-list { margin-top: 22px; }
+  .offer-page .of-scope-list li { font-size: 14px; line-height: 1.8; padding-block: 14px; }
+  .offer-page .of-small-note { font-size: 13px; line-height: 1.8; margin-top: 22px; }
+  .offer-page .of-brief-result { padding: 0 7px; }
+  .offer-page .of-brief-statement { font-size: 26px; line-height: 1.45; letter-spacing: -.04em; margin-bottom: 29px; }
+  .offer-page .of-brief-statement br { display: none; }
+  .offer-page .of-brief-statement > span { display: block; }
+  .offer-page .of-brief-result > p:last-child { font-size: 15px; line-height: 1.8; margin-top: 18px; }
+  .offer-page .of-new-work { grid-template-columns: 1fr; gap: 36px; margin-top: 48px; }
+  .offer-page .of-new-work h3 { font-size: 26px; line-height: 1.25; }
+  .offer-page .of-new-work > div > p { font-size: 15px; line-height: 1.8; margin-top: 20px; }
+  .offer-page .of-new-work .inline-link { font-size: 13px; margin-top: 18px; }
+  .offer-page .of-workflow { padding-left: 20px; }
+  .offer-page .of-workflow dt { font-size: 15px; }
+  .offer-page .of-workflow dd { font-size: 14px; line-height: 1.8; }
+  .offer-page .of-workflow > div + div { margin-top: 27px; }
+
+  .offer-page .of-renovation { padding-block: 64px 61px; border-radius: 30px 0 0 0; }
+  .offer-page .of-renovation-heading h2 { font-size: 34px; line-height: 1.18; letter-spacing: -.045em; }
+  .offer-page .of-renovation-heading > p:last-child { font-size: 15px; line-height: 1.8; margin-top: 26px; }
+  .offer-page .of-renovation-body { display: flex; flex-direction: column; gap: 39px; margin-top: 39px; }
+  .offer-page .of-review { display: block; }
+  .offer-page .of-review h3 { font-size: 21px; line-height: 1.4; margin-bottom: 16px; }
+  .offer-page .of-review h3:not(:first-child) { margin: 28px 0 16px; }
+  .offer-page .of-review > p { font-size: 14px; line-height: 1.85; }
+  .offer-page .of-review > .of-review-principle { font-size: 20px; margin-top: 27px; }
+  .offer-page .of-review-principle br { display: initial; }
+  .offer-page .of-scope-demo { width: 100%; }
+  .offer-page .of-scope-demo legend { font-size: 12px; margin-bottom: 19px; }
+  .offer-page .of-scope-demo > label { padding: 12px 13px; font-size: 13px; min-height: 47px; }
+  .offer-page .of-scope-scene { height: 321px; margin-top: 29px; }
+  .offer-page .of-scope-shape { inset: 5% 0 0; }
+  .offer-page .of-fragment-main { width: 48%; height: 198px; top: 44px; padding: 22px 18px; }
+  .offer-page .of-fragment-main > span { font-size: 29px; }
+  .offer-page .of-fragment-main i:first-of-type { margin-top: 25px; }
+  .offer-page .of-fragment-text { width: 39%; left: 58%; top: 90px; height: 150px; padding: 20px 16px; }
+  .offer-page .of-fragment-text > span { font-size: 19px; }
+  .offer-page .of-fragment-nav, .offer-page .of-fragment-contact { width: 42%; left: 55%; padding: 10px 12px; font-size: 10px; min-height: 49px; gap: 5px; }
+  .offer-page .of-fragment-nav { top: 19px; }
+  .offer-page .of-fragment-contact { top: 262px; }
+  .offer-page #of-rebuild:checked ~ .of-scope-scene .of-fragment-nav { transform: translate(-124%,243px); }
+  .offer-page #of-rebuild:checked ~ .of-scope-scene .of-fragment-main { transform: translate(3px,-13px) rotate(0) scale(.91); }
+  .offer-page #of-rebuild:checked ~ .of-scope-scene .of-fragment-text { transform: translate(-2px,-48px) rotate(-3deg); }
+  .offer-page #of-rebuild:checked ~ .of-scope-scene .of-fragment-contact { transform: translate(0,0); }
+  .offer-page .of-scope-result { font-size: 13px; min-height: 74px; margin-top: 23px; }
+  .offer-page .of-demo-note { font-size: 11px; line-height: 1.8; margin-top: 14px; }
+  .offer-page .of-renovation-paths { grid-template-columns: 1fr; gap: 31px; margin-top: 36px; padding-top: 31px; }
+  .offer-page .of-renovation-paths h3 { font-size: 23px; line-height: 1.35; max-width: 27ch; }
+  .offer-page .of-renovation-paths p { margin-top: 17px; font-size: 14px; line-height: 1.85; }
+  .offer-page .of-renovation-link { font-size: 13px; line-height: 1.65; margin-top: 26px; gap: 13px; }
+
+  .offer-page .of-continuity { padding-block: 66px 70px; }
+  .offer-page .of-continuity-intro { display: block; padding-bottom: 34px; }
+  .offer-page .of-continuity-intro > p:first-child { font-size: 14px; max-width: 29ch; }
+  .offer-page .of-continuity-title { width: auto; font-size: 35px; line-height: 1.2; letter-spacing: -.045em; margin-top: 24px; }
+  .offer-page .of-care { grid-template-columns: 1fr; gap: 24px; padding-top: 32px; }
+  .offer-page .of-care h2 { font-size: 28px; line-height: 1.25; }
+  .offer-page .of-care h2 br { display: none; }
+  .offer-page .of-care-copy > p:first-child { font-size: 15px; line-height: 1.85; }
+  .offer-page .of-care-copy ul { margin-top: 23px; font-size: 14px; line-height: 1.8; }
+  .offer-page .of-care-copy li + li { margin-top: 13px; }
+  .offer-page .of-seo { width: calc(100% - 10px); margin-top: 51px; padding: 39px var(--gutter) 34px; border-radius: 30px 0 0 4px; }
+  .offer-page .of-seo h2 { font-size: 28px; line-height: 1.3; letter-spacing: -.035em; }
+  .offer-page .of-seo h2 br { display: none; }
+  .offer-page .of-seo h2 > span { display: block; margin-top: 9px; }
+  .offer-page .of-seo-columns { grid-template-columns: 1fr; gap: 30px; margin-top: 32px; }
+  .offer-page .of-seo-columns h3 { font-size: 20px; line-height: 1.4; margin-bottom: 16px; }
+  .offer-page .of-seo-columns p { font-size: 14px; line-height: 1.85; }
+  .offer-page .of-seo-note { font-size: 13px; line-height: 1.8; margin-top: 29px; }
+  .offer-page .of-content { grid-template-columns: 1fr; gap: 34px; margin-top: 55px; }
+  .offer-page .of-content h2 { font-size: 29px; line-height: 1.27; letter-spacing: -.035em; }
+  .offer-page .of-content h2 br { display: none; }
+  .offer-page .of-content h2 > span { display: block; margin-top: 7px; max-width: 260px; }
+  .offer-page .of-content-intro p { font-size: 15px; line-height: 1.85; margin-top: 22px; }
+  .offer-page .of-content-actions > div { gap: 12px; padding-block: 23px; }
+  .offer-page .of-content-actions dt { font-size: 25px; }
+  .offer-page .of-content-actions dd { font-size: 14px; line-height: 1.85; }
+  .offer-page .of-finale { padding-block: 71px 64px; }
+  .offer-page .of-finale-inner { gap: 32px; }
+  .offer-page .of-finale h2 { font-size: 35px; line-height: 1.2; letter-spacing: -.045em; }
+  .offer-page .of-finale h2 br { display: none; }
+  .offer-page .of-finale h2 > span { display: block; margin-top: 8px; }
+  .offer-page .of-finale p { font-size: 14px; line-height: 1.8; margin-top: 25px; }
+  .offer-page .of-finale .consultation { width: 100%; margin: 0; }
+  .offer-page .of-finale-ribbon { width: 900px; bottom: -190px; left: -170px; }
+}
+@media (max-width: 360px) {
+  .offer-page .of-opening h1 { font-size: 31px; }
+  .offer-page .of-opening-space > p { font-size: 14px; }
+  .offer-page .of-entries a { padding-inline: 23px; }
+  .offer-page .of-entries strong { font-size: 22px; }
+  .offer-page .of-new-heading h2 { font-size: 31px; }
+  .offer-page .of-brief-scope { padding-inline: 22px; }
+  .offer-page .of-brief-statement { font-size: 24px; }
+  .offer-page .of-renovation-heading h2 { font-size: 30px; }
+  .offer-page .of-scope-demo > label { font-size: 12px; padding-inline: 10px; }
+  .offer-page .of-fragment-main { padding-inline: 15px; }
+  .offer-page .of-fragment-main > span { font-size: 26px; }
+  .offer-page .of-fragment-nav, .offer-page .of-fragment-contact { font-size: 9px; padding-inline: 10px; }
+  .offer-page .of-fragment-text { padding-inline: 14px; }
+  .offer-page .of-continuity-title { font-size: 32px; }
+  .offer-page .of-care h2, .offer-page .of-seo h2 { font-size: 26px; }
+  .offer-page .of-content h2 { font-size: 27px; }
+  .offer-page .of-finale h2 { font-size: 32px; }
+}
+
+/* Contact and acknowledgement only; no homepage or Offer selectors. */
+@media (max-width: 1200px) {
+  .contact-page .ct-contact-strip { grid-template-columns: .85fr 1.3fr .85fr; gap: 22px; }
+  .contact-page .ct-contact-strip strong { font-size: 17px; }
+  .contact-page .ct-opening-fold { right: -50px; top: 70px; width: 310px; opacity: .7; }
+  .contact-page .ct-form-surface { padding-inline: 48px; }
+  .thanks-page .ct-thanks-fold { width: 350px; top: 95px; right: 0; }
+}
+@media (max-width: 900px) {
+  .contact-page .site-header { position: relative; }
+  .contact-page .ct-opening-inner { padding-top: 21px; padding-bottom: 87px; }
+  .contact-page .ct-breadcrumb { margin-bottom: 32px; }
+  .contact-page .ct-opening h1 { font-size: 57px; max-width: 610px; }
+  .contact-page .ct-intro { max-width: 430px; font-size: 16px; margin-top: 26px; }
+  .contact-page .ct-opening-fold { right: -55px; top: 92px; width: 260px; opacity: .42; }
+  .contact-page .ct-contact-strip { grid-template-columns: 1fr 1fr; gap: 23px 38px; margin-top: 42px; padding-top: 24px; }
+  .contact-page .ct-person { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 25px; }
+  .contact-page .ct-person span { margin: 0; }
+  .contact-page .ct-person strong { font-size: 22px; }
+  .contact-page .ct-contact-strip .ct-email { grid-column: 1; }
+  .contact-page .ct-contact-strip a .icon { display: none; }
+  .contact-page .ct-form-surface { width: calc(100% - 22px); padding: 53px 32px 55px; border-radius: 43px 0 0 0; }
+  .contact-page .ct-sheet-fold { width: 64px; height: 64px; }
+  .contact-page .ct-form-intro { gap: 30px; padding-right: 8px; }
+  .contact-page .ct-form-intro h2 { font-size: 38px; }
+  .contact-page .ct-form-intro > div { max-width: 245px; }
+  .contact-page .ct-form-intro p { font-size: 14px; }
+  .contact-page .ct-fields { gap: 24px; }
+  .contact-page .ct-group legend { font-size: 21px; }
+  .contact-page .ct-form-end { gap: 25px; }
+  .contact-page .ct-submit { gap: 22px; padding-inline: 22px; }
+  .thanks-page .ct-thanks-main { min-height: 650px; align-items: start; padding-top: 100px; padding-bottom: 200px; }
+  .thanks-page h1 { font-size: 61px; }
+  .thanks-page .ct-thanks-fold { width: 280px; top: auto; bottom: 0; right: 12px; opacity: .8; }
+}
+@media (max-width: 600px) {
+  .contact-page .ct-opening-inner { padding-top: 15px; padding-bottom: 82px; }
+  .contact-page .ct-breadcrumb { font-size: 11px; margin-bottom: 27px; }
+  .contact-page .ct-opening h1 { font-size: clamp(34px, 9.7vw, 48px); line-height: 1.13; letter-spacing: -.045em; }
+  .contact-page .ct-intro { font-size: 15px; line-height: 1.8; margin-top: 26px; max-width: 34ch; }
+  .contact-page .ct-opening-fold { width: 210px; right: -50px; top: 253px; opacity: .17; transform: rotate(22deg); }
+  .contact-page .ct-contact-strip { display: flex; flex-direction: column; gap: 23px; margin-top: 34px; padding-top: 25px; }
+  .contact-page .ct-person { display: block; }
+  .contact-page .ct-person span { margin-bottom: 7px; }
+  .contact-page .ct-person strong { font-size: 22px; }
+  .contact-page .ct-contact-strip a { align-self: stretch; min-height: 51px; padding-right: 20px; }
+  .contact-page .ct-contact-strip a span { font-size: 12px; margin-bottom: 6px; }
+  .contact-page .ct-contact-strip a strong { font-size: clamp(15px, 4.28vw, 19px); letter-spacing: -.025em; overflow-wrap: anywhere; }
+  .contact-page .ct-phone strong { font-size: 19px !important; }
+  .contact-page .ct-form-surface { width: calc(100% - 10px); margin-top: -39px; padding: 42px 22px 44px; border-radius: 32px 0 0 0; }
+  .contact-page .ct-sheet-fold { width: 43px; height: 43px; }
+  .contact-page .ct-form-intro { display: block; padding: 0; margin-bottom: 23px; }
+  .contact-page .ct-form-intro h2 { font-size: 31px; line-height: 1.2; letter-spacing: -.04em; }
+  .contact-page .ct-form-intro h2 br { display: none; }
+  .contact-page .ct-form-intro > div { max-width: none; margin-top: 19px; }
+  .contact-page .ct-form-intro p { font-size: 14px; line-height: 1.8; }
+  .contact-page .ct-form-intro .ct-required-note { font-size: 12px; margin-top: 16px; }
+  .contact-page .ct-preview-note { font-size: 12px; padding: 13px 14px; margin-bottom: 30px; }
+  .contact-page .ct-fields { grid-template-columns: 1fr; gap: 22px; }
+  .contact-page .ct-group legend { font-size: 20px; line-height: 1.4; letter-spacing: -.03em; margin-bottom: 23px; }
+  .contact-page .ct-group + .ct-group { margin-top: 33px; padding-top: 27px; }
+  .contact-page .ct-field > label { font-size: 14px; margin-bottom: 9px; }
+  .contact-page .ct-field :is(input,select,textarea) { font-size: 16px; min-height: 56px; padding: 14px 12px; }
+  .contact-page .ct-field select { padding-right: 4px; }
+  .contact-page .ct-field [aria-invalid="true"] { padding: 13px 11px; }
+  .contact-page .ct-field textarea { min-height: 168px; }
+  .contact-page .ct-field-hint { font-size: 12px; }
+  .contact-page .ct-message-hint { font-size: 14px; margin-bottom: 19px; }
+  .contact-page .ct-form-end { display: flex; flex-direction: column; gap: 25px; align-items: stretch; margin-top: 24px; }
+  .contact-page .ct-privacy { font-size: 12px; line-height: 1.8; }
+  .contact-page .ct-submit { width: 100%; min-height: 62px; padding: 17px 22px; border-radius: 31px 5px 31px 5px; font-size: 15px; }
+  .contact-page .ct-error-summary { padding: 19px 16px; }
+  .contact-page .ct-error-summary h3 { font-size: 18px; }
+  .contact-page .ct-error-summary a { font-size: 13px; padding-block: 5px; }
+  .contact-page .ct-form-status:not(:empty) { font-size: 14px; padding: 16px; }
+  .thanks-page .ct-thanks-header { padding-block: 16px; }
+  .thanks-page .ct-thanks-main { min-height: 650px; padding-top: 55px; padding-bottom: 245px; }
+  .thanks-page h1 { font-size: clamp(37px,10.8vw,55px); line-height: 1.13; letter-spacing: -.045em; }
+  .thanks-page .ct-thanks-copy > p { font-size: 15px; max-width: 29ch; margin-top: 25px; }
+  .thanks-page .ct-home-link { font-size: 13px; width: 100%; justify-content: space-between; gap: 20px; padding: 16px 20px; margin-top: 29px; }
+  .thanks-page .ct-thanks-fold { width: min(255px,80%); right: 15px; bottom: 15px; }
+  .thanks-page .ct-thanks-footer { font-size: 10px; gap: 18px; padding-block: 19px; }
+}
+@media (max-width: 360px) {
+  .contact-page .ct-opening h1 { font-size: 32px; }
+  .contact-page .ct-contact-strip a { padding-right: 0; }
+  .contact-page .ct-contact-strip a strong { font-size: 15px; }
+  .contact-page .ct-form-surface { padding-inline: 18px; }
+  .contact-page .ct-form-intro h2 { font-size: 28px; }
+  .contact-page .ct-group legend { font-size: 19px; }
+  .thanks-page h1 { font-size: 35px; }
+  .thanks-page .ct-home-link { padding-inline: 17px; font-size: 12px; gap: 15px; }
+}
+
+/* Publication package: per-page responsive compositions, with readable legal copy. */
+@media (max-width: 1100px) {
+  .about-page .ab-opening-inner { min-height: 790px; }
+  .about-page .ab-opening-bottom { margin-top: 205px; }
+  .about-page .ab-sculpture { top: 235px; right: -9%; }
+  .about-page .ab-work-flow { gap: 30px; }
+  .legal-page .lg-terms-form span { width: 235px; }
+  .legal-page .lg-terms-form span:nth-child(2) { left: 65px; }
+  .legal-page .lg-paper-form { scale: .85; }
+}
+@media (max-width: 900px) {
+  .about-page .site-header, .terms-page .site-header { background: #dee5d0; color: var(--ink); }
+  .about-page .menu-toggle, .terms-page .menu-toggle { background: #d0dac0; color: var(--ink); border-color: #77866a; }
+  .about-page .ab-opening-inner { padding-top: 114px; min-height: 810px; }
+  .about-page h1 { font-size: 72px; }
+  .about-page .ab-title p { font-size: 15px; }
+  .about-page .ab-sculpture { top: 280px; right: -5%; width: 80%; }
+  .about-page .ab-opening-bottom { margin-top: 220px; }
+  .about-page .ab-purpose { padding-block: 80px; gap: 7%; grid-template-columns: .85fr 1.15fr; }
+  .about-page .ab-purpose h2 { font-size: 37px; }
+  .about-page .ab-purpose-copy .ab-lead { font-size: 24px; }
+  .about-page .ab-practice { padding-block: 78px; border-radius: 0 50px 0 0; }
+  .about-page .ab-practice-inner { gap: 7%; grid-template-columns: .85fr 1.15fr; }
+  .about-page .ab-practice-heading h2 { font-size: 40px; }
+  .about-page .ab-cut { width: 180px; height: 165px; }
+  .about-page .ab-principles dt { font-size: 22px; }
+  .about-page .ab-collaboration { padding-block: 80px; }
+  .about-page .ab-work-intro { display: block; }
+  .about-page .ab-work-intro p { margin-top: 25px; max-width: none; }
+  .about-page .ab-work-flow { gap: 30px; grid-template-columns: 1fr 1fr; }
+  .about-page .ab-work-flow article:nth-child(3) { padding: 0; grid-column: 2; }
+  .about-page .ab-continuity-inner { grid-template-columns: .4fr 1fr; gap: 7%; }
+  .about-page .ab-continuity h2 { font-size: 42px; }
+  .about-page .ab-invitation { padding-block: 65px; gap: 30px; }
+  .about-page .ab-invitation h2 { font-size: 33px; }
+  .about-page .ab-invitation .consultation { font-size: 13px; gap: 17px; padding-left: 20px; }
+  .legal-page .lg-opening { padding-top: 118px; }
+  .legal-page .lg-opening-grid { gap: 10px; grid-template-columns: 1fr .6fr; }
+  .legal-page .lg-opening h1 { font-size: 57px; }
+  .legal-page .lg-paper-form { scale: .65; transform-origin: left center; margin-left: 0; width: 245px; height: 220px; }
+  .terms-page .lg-terms-form { scale: .7; transform-origin: left center; width: 230px; }
+  .legal-page .lg-draft { grid-template-columns: 1fr; gap: 8px; }
+  .legal-page .lg-layout { grid-template-columns: 190px minmax(0,1fr); gap: 6%; }
+  .legal-page .lg-index nav a { font-size: 12px; padding-block: 11px; }
+  .legal-page .lg-document h2 { font-size: 28px; }
+  .legal-page .lg-identity { padding: 22px; font-size: 14px; }
+  .error-page .er-main { grid-template-columns: 1fr; gap: 50px; max-width: 620px; padding-block: 35px 60px; }
+  .error-page .er-symbol { font-size: 155px; justify-content: center; }
+  .error-page .er-message { text-align: center; }
+  .error-page h1 { font-size: 49px; }
+  .error-page .er-message > .pk-text-link { margin-inline: auto; }
+}
+@media (max-width: 600px) {
+  .about-page, .legal-page, .error-page { --gutter: 22px; }
+  .pk-breadcrumb { font-size: 11px; gap: 11px; margin-bottom: 30px; }
+  .about-page .ab-opening-inner { min-height: 740px; padding-top: 101px; padding-bottom: 30px; }
+  .about-page h1 { font-size: clamp(45px,12.5vw,62px); line-height: 1.07; letter-spacing: -.055em; }
+  .about-page .ab-title p { font-size: 14px; margin-top: 24px; max-width: 29ch; }
+  .about-page .ab-sculpture { width: 118%; max-width: 580px; right: -14%; top: 350px; }
+  .about-page .ab-opening-bottom { margin-top: 281px; align-items: end; gap: 20px; }
+  .about-page .ab-shape-caption { font-size: 18px; line-height: 1.5; }
+  .about-page .ab-opening-bottom .pk-text-link { font-size: 12px; gap: 10px; }
+  .about-page .ab-purpose { display: block; padding-block: 62px 68px; }
+  .about-page .ab-purpose h2 { font-size: 33px; line-height: 1.2; margin-bottom: 35px; }
+  .about-page .ab-purpose-copy .ab-lead { font-size: 22px; line-height: 1.5; }
+  .about-page .ab-purpose-copy p { font-size: 16px; margin-top: 23px; }
+  .about-page .ab-practice { padding-block: 58px 62px; border-radius: 0 40px 0 0; }
+  .about-page .ab-practice-inner { display: block; }
+  .about-page .ab-practice-heading h2 { font-size: 35px; line-height: 1.16; }
+  .about-page .ab-practice-heading p { max-width: 24ch; font-size: 14px; margin-top: 24px; }
+  .about-page .ab-cut { position: absolute; right: -12px; bottom: -35px; width: 98px; height: 96px; opacity: .8; }
+  .about-page .ab-principles { margin-top: 57px; }
+  .about-page .ab-principles > div { padding-block: 25px; }
+  .about-page .ab-principles dt { font-size: 22px; }
+  .about-page .ab-principles dd { font-size: 16px; line-height: 1.8; }
+  .about-page .ab-collaboration { padding-block: 63px; }
+  .about-page .ab-work-intro h2 { font-size: 32px; line-height: 1.2; }
+  .about-page .ab-work-intro p { font-size: 15px; max-width: 30ch; }
+  .about-page .ab-work-flow { display: block; margin-top: 36px; padding-left: 20px; border-left: 3px solid #b8c7a4; }
+  .about-page .ab-work-flow article, .about-page .ab-work-flow article:nth-child(2), .about-page .ab-work-flow article:nth-child(3) { padding: 0; margin-top: 34px; }
+  .about-page .ab-work-flow h3 { font-size: 23px; margin-bottom: 15px; }
+  .about-page .ab-owner { font-size: 13px; margin-top: 38px; }
+  .about-page .ab-continuity { padding-block: 48px 58px; }
+  .about-page .ab-continuity-inner { display: flex; flex-direction: column; gap: 33px; }
+  .about-page .ab-margin-note { font-size: 13px; display: block; line-height: 1.7; }
+  .about-page .ab-margin-note br { display: none; }
+  .about-page .ab-continuity h2 { font-size: 35px; line-height: 1.18; }
+  .about-page .ab-continuity h2 + p { margin-top: 24px; }
+  .about-page .ab-invitation { display: block; padding-block: 59px; }
+  .about-page .ab-invitation h2 { font-size: 28px; }
+  .about-page .ab-invitation .consultation { margin-top: 30px; }
+  .legal-page .lg-opening { padding-block: 104px 34px; }
+  .legal-page .lg-opening-grid, .terms-page .lg-opening-grid { display: block; position: relative; }
+  .legal-page .lg-opening h1 { font-size: clamp(38px,10vw,49px); line-height: 1.14; letter-spacing: -.045em; position: relative; z-index: 1; }
+  .legal-page .lg-opening-grid p { font-size: 23px; margin-top: 29px; line-height: 1.35; max-width: 200px; position: relative; z-index: 1; }
+  .legal-page .lg-paper-form { position: absolute; width: 135px; height: 180px; scale: .37; top: 55px; left: auto; right: 0; transform-origin: center center; opacity: .8; }
+  .terms-page .lg-opening-grid p { font-size: 25px; max-width: 225px; }
+  .terms-page .lg-terms-form { display: none; }
+  .terms-page .lg-opening-grid::after { content: ""; position: absolute; right: -9px; bottom: -10px; height: 48px; width: 54px; background: linear-gradient(130deg,#d7e7ae 50%,#71864f 50%); transform: skewY(-20deg); }
+  .legal-page .lg-intro { font-size: 14px; margin-top: 44px; max-width: 34ch; }
+  .legal-page .lg-draft { width: calc(100% - 32px); padding: 19px 18px; font-size: 13px; margin-top: 24px; }
+  .legal-page .lg-layout { display: block; padding-block: 30px 60px; }
+  .legal-page .lg-index { position: static; padding: 0; max-height: none; overflow: visible; margin-bottom: 47px; border-bottom: 1px solid #a4b292; }
+  .legal-page .lg-index summary { font-size: 16px; padding-block: 16px; }
+  .legal-page .lg-index nav { gap: 0; padding-bottom: 16px; }
+  .legal-page .lg-index nav a { min-height: 44px; font-size: 14px; padding-block: 10px; }
+  .legal-page .lg-document { font-size: 16px; line-height: 1.85; }
+  .legal-page .lg-document section { margin-bottom: 39px; }
+  .legal-page .lg-document section + section { padding-top: 28px; }
+  .legal-page .lg-document h2 { font-size: 26px; line-height: 1.3; margin-bottom: 23px; letter-spacing: -.035em; }
+  .legal-page .lg-document h3 { font-size: 19px; }
+  .legal-page .lg-identity { font-size: 14px; padding: 22px 17px; gap: 5px; border-radius: 0 25px 0 0; }
+  .legal-page .lg-identity strong { font-size: 21px; }
+  .legal-page .lg-identity a { font-size: 13px; min-height: 40px; display: inline-flex; align-items: center; }
+  .legal-page .lg-pending { padding: 19px 17px; font-size: 14px; }
+  .legal-page .lg-definitions > div { padding-left: 14px; }
+  .error-page .er-header { padding-block: 15px; }
+  .error-page .er-main { gap: 43px; padding-block: 38px 48px; }
+  .error-page .er-symbol { font-size: clamp(91px,28vw,135px); gap: 10px; }
+  .error-page .er-zero { box-shadow: 6px 6px 0 #6b7f4d; }
+  .error-page h1 { font-size: clamp(32px,8.7vw,44px); line-height: 1.17; }
+  .error-page .er-label { font-size: 11px; margin-bottom: 22px; }
+  .error-page .er-message > p:not(.er-label) { font-size: 15px; margin-top: 21px; }
+  .error-page .consultation { font-size: 12px; gap: 13px; padding-left: 20px; width: 100%; max-width: 340px; }
+  .error-page .action-circle { width: 45px; height: 45px; flex-basis: 45px; }
+  .error-page .er-footer { font-size: 10px; padding-block: 19px; gap: 12px; }
+}
+@media (max-width: 360px) {
+  .about-page, .legal-page, .error-page { --gutter: 20px; }
+  .about-page .ab-opening-inner { min-height: 686px; }
+  .about-page .ab-sculpture { top: 355px; }
+  .about-page .ab-opening-bottom { margin-top: 238px; }
+  .about-page .ab-shape-caption { font-size: 16px; }
+  .about-page .ab-work-intro h2 { font-size: 29px; }
+  .about-page .ab-practice-heading h2 { font-size: 33px; }
+  .legal-page .lg-opening h1 { font-size: 35px; }
+  .legal-page .lg-paper-form { right: -1px; scale: .3; top: 47px; }
+  .legal-page .lg-document h2 { font-size: 24px; }
+  .error-page h1 { font-size: 31px; }
+}
+
