@@ -1,0 +1,6 @@
+# Offline placeholders only. Real keys belong only in Cloudflare Worker Secrets.
+ABUSE_SECRET=REPLACE_WITH_RANDOM_SECRET_AT_LEAST_32_CHARACTERS
+RESEND_API_KEY=REPLACE_WITH_RESEND_SECRET_IN_CLOUDFLARE_ONLY
+FORM_ENABLED=false
+ALLOWED_ORIGINS=http://localhost:4173
+FROM_EMAIL=formularz@send.formawww.pl

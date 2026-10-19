@@ -22,7 +22,8 @@
   <link rel="preload" href="assets/fonts/Manrope-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css?v=audit-1">
   <link rel="stylesheet" href="css/responsive.css?v=audit-1">
-  <script src="js/main.js?v=audit-1" defer></script>
+  <script src="js/contact-transport.js?v=contact-1" defer></script>
+  <script src="js/main.js?v=contact-1" defer></script>
   <!-- Draft: remove noindex from Kontakt only when the site is ready for public launch. -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
@@ -79,12 +80,13 @@
       <div class="ct-sheet-fold" aria-hidden="true"></div>
       <div class="ct-form-inner">
         <div class="ct-form-intro"><h2 id="ct-form-title">Zacznijmy<br> <span>od rozmowy.</span></h2><div><p>Nie musisz mieć gotowego briefu.<br> Wystarczy punkt wyjścia.</p><p id="ct-required-note" class="ct-required-note">Pola oznaczone <span aria-hidden="true">*</span><span class="ct-sr-only">gwiazdką</span> są wymagane.</p></div></div>
-        <p id="ct-preview-note" class="ct-preview-note"><strong>Podgląd formularza.</strong> Wysyłka nie jest jeszcze aktywna. Dane nie opuszczą tej strony.</p>
+        <p id="ct-preview-note" class="ct-preview-note"><strong>Konfiguracja formularza.</strong> Wysyłka wymaga jeszcze aktywacji. Możesz skorzystać z danych kontaktowych powyżej.</p>
 
         <!-- No-JS fail-closed: disabled submit prevents native/implicit submission.
              JS installs the submit handler before enabling the button.
-             Future delivery uses the same-origin endpoint in main.js, never mailto. -->
-        <form id="contact-form" data-contact-form action="kontakt.html" method="post" aria-describedby="ct-required-note ct-preview-note">
+             Replace the public .invalid URL with the deployed Worker /contact URL.
+             No secret belongs here. Placeholder URLs are never requested. -->
+        <form id="contact-form" data-contact-form data-contact-endpoint="https://formawww-contact.kontakt-patrykwoloszyn.workers.dev/contact" action="kontakt.html" method="post" aria-describedby="ct-required-note ct-preview-note">
           <div class="ct-error-summary" data-error-summary role="alert" tabindex="-1" aria-labelledby="ct-errors-title" hidden><h3 id="ct-errors-title">Sprawdź zaznaczone pola.</h3><ul data-error-list></ul></div>
           <div class="ct-trap" aria-hidden="true"><label for="ct-fax">Pozostaw to pole puste</label><input id="ct-fax" name="fax_number" type="text" tabindex="-1" autocomplete="off"></div>
 
@@ -109,7 +111,7 @@
           <fieldset class="ct-group ct-message-group">
             <legend>Opowiedz o swoim pomyśle.</legend>
             <p id="ct-message-hint" class="ct-message-hint">Napisz, czym zajmuje się firma i co chcesz stworzyć lub zmienić. Nie musisz mieć gotowego briefu.</p>
-            <div class="ct-field"><label for="ct-message">Wiadomość <span class="ct-required" aria-hidden="true">*</span></label><textarea id="ct-message" name="message" rows="5" maxlength="5000" required aria-describedby="ct-message-hint ct-message-error"></textarea><p id="ct-message-error" class="ct-field-error" hidden></p></div>
+            <div class="ct-field"><label for="ct-message">Wiadomość <span class="ct-required" aria-hidden="true">*</span></label><textarea id="ct-message" name="message" rows="5" minlength="10" maxlength="5000" required aria-describedby="ct-message-hint ct-message-error"></textarea><p id="ct-message-error" class="ct-field-error" hidden></p></div>
           </fieldset>
 
           <div class="ct-form-end">
@@ -117,7 +119,7 @@
             <button class="ct-submit" type="submit" data-contact-submit disabled><span data-submit-label>Wyślij wiadomość</span><svg class="icon" aria-hidden="true"><use href="#diagonal"/></svg></button>
           </div>
           <p class="ct-form-status" data-form-status role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
-          <noscript><p class="ct-noscript">Wysyłka formularza nie jest aktywna. Włącz JavaScript, jeśli chcesz sprawdzić jego walidację w podglądzie. Możesz też skorzystać z danych kontaktowych powyżej.</p></noscript>
+          <noscript><p class="ct-noscript">Wysyłka formularza wymaga JavaScript. Włącz go lub skorzystaj z danych kontaktowych powyżej.</p></noscript>
         </form>
       </div>
     </section>

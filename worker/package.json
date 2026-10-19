@@ -1,0 +1,13 @@
+{
+  "name": "formawww-contact-worker",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22.13"},
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node tools/check-setup.mjs",
+    "check:deployment": "node tools/check-setup.mjs --deployment",
+    "check:activation": "node tools/check-setup.mjs --activation",
+    "check:endpoint": "node tools/check-endpoint.mjs"
+  }
+}

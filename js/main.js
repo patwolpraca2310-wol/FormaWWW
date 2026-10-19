@@ -54,21 +54,16 @@
   if (year) year.textContent = String(new Date().getFullYear());
 })();
 
-/* Contact form: preview-first, no provider and no outgoing request by default.
-   Deployment checklist:
-   - Set endpoint to an approved same-origin POST handler (for example /api/contact).
-   - Server must fix the recipient to patryk.woloszyn@formawww.pl; never trust a client recipient.
-   - Validate/limit payloads, rate-limit, verify anti-spam and origin, and keep delivery secrets server-side.
-   - Return JSON { accepted: true } only after accepting the message for delivery.
-     Optional validation response: HTTP 422, { errors: { email: "..." } }.
-   - Publish the approved privacy notice and update the preview notice when enabling delivery.
-   - Client checks/honeypot are UX and spam signals, not a security boundary. */
+/* Contact form. The public Worker URL is configured in kontakt.html.
+   No secrets in this file. Transport and CORS contract: worker/README.md.
+   Client checks are UX; the Worker independently validates every request. */
 (() => {
   "use strict";
   const form = document.querySelector("[data-contact-form]");
   if (!form) return;
 
-  const delivery = Object.freeze({ endpoint: "", timeoutMs: 15000, thankYouPage: "dziekujemy.html" });
+  const delivery = Object.freeze({ endpoint: form.dataset.contactEndpoint || "", timeoutMs: 20000, thankYouPage: "dziekujemy.html" });
+  const transport = window.FormaWWWContactTransport;
   const button = form.querySelector("[data-contact-submit]");
   const buttonLabel = form.querySelector("[data-submit-label]");
   const status = form.querySelector("[data-form-status]");
@@ -80,7 +75,6 @@
   const labels = { service: "Rodzaj usługi", website: "Adres strony", name: "Imię", company: "Nazwa firmy", email: "Adres e-mail", phone: "Telefon", message: "Wiadomość" };
   let attempted = false;
   let inFlight = false;
-  let previewValidated = false;
   let accepted = false;
 
   const validationMessage = field => {
@@ -95,12 +89,13 @@
     if (field.required && !value) return requiredMessages[field.name];
     if (!value) return "";
     if (field.maxLength > 0 && value.length > field.maxLength) return "Skróć treść do maksymalnie " + field.maxLength + " znaków.";
+    if (field.minLength > 0 && value.length < field.minLength) return "Wpisz co najmniej " + field.minLength + " znaków.";
     if (field.name === "service" && !services.has(value)) return requiredMessages.service;
     if (field.name === "email" && field.validity.typeMismatch) return "Podaj poprawny adres e-mail, np. kontakt@twojafirma.pl.";
     if (field.name === "website") {
       try {
         const url = new URL(value);
-        if (!["https:", "http:"].includes(url.protocol) || !url.hostname) throw new Error("Invalid URL");
+        if (!["https:", "http:"].includes(url.protocol) || !url.hostname || url.username || url.password) throw new Error("Invalid URL");
       } catch {
         return "Podaj pełny adres strony, np. https://twojafirma.pl.";
       }
@@ -143,34 +138,14 @@
     status.dataset.error = String(isError);
   };
 
-  // Replaceable transport. Preview returns locally without calling fetch.
-  const submitInquiry = async payload => {
-    if (!delivery.endpoint) return { mode: "preview" };
-    const endpoint = new URL(delivery.endpoint, window.location.href);
-    if (endpoint.origin !== window.location.origin) throw new Error("Unsupported endpoint");
-    const controller = new AbortController();
-    const timeout = window.setTimeout(() => controller.abort(), delivery.timeoutMs);
-    try {
-      const response = await fetch(endpoint.href, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        credentials: "same-origin",
-        cache: "no-store",
-        signal: controller.signal,
-        body: JSON.stringify(payload)
-      });
-      const result = await response.json();
-      if (response.status === 422 && result.errors && typeof result.errors === "object") return { mode: "invalid", errors: result.errors };
-      if (!response.ok || result.accepted !== true) throw new Error("Submission not accepted");
-      return { mode: "accepted" };
-    } finally {
-      window.clearTimeout(timeout);
-    }
+  const submitInquiry = payload => {
+    if (!transport) throw Object.assign(new Error("Missing transport"), { code: "not_configured" });
+    return transport.submit(payload, delivery);
   };
 
   form.addEventListener("submit", async event => {
     event.preventDefault(); // No native POST, URL query string, mailto or false success.
-    if (inFlight || previewValidated || accepted) return;
+    if (inFlight || accepted) return;
     attempted = true;
     showStatus("");
     for (const field of fields) setError(field, validationMessage(field));
@@ -189,15 +164,11 @@
     payload.fax_number = form.elements.namedItem("fax_number").value;
     inFlight = true;
     button.disabled = true;
-    buttonLabel.textContent = delivery.endpoint ? "Wysyłanie…" : "Sprawdzanie…";
+    buttonLabel.textContent = "Wysyłanie…";
     form.setAttribute("aria-busy", "true");
     try {
       const result = await submitInquiry(payload);
-      if (result.mode === "preview") {
-        previewValidated = true;
-        showStatus("Wysyłka formularza zostanie aktywowana po podłączeniu usługi formularzowej.");
-        status.focus();
-      } else if (result.mode === "invalid") {
+      if (result.mode === "invalid") {
         for (const field of fields) {
           const message = result.errors[field.name];
           if (typeof message === "string") setError(field, message.slice(0,300));
@@ -213,24 +184,19 @@
         window.location.assign(delivery.thankYouPage);
         return;
       }
-    } catch {
-      showStatus("Nie mogę potwierdzić przyjęcia wiadomości. Twoje dane pozostały w formularzu. Spróbuj ponownie później lub skorzystaj z danych kontaktowych.", true);
+    } catch (error) {
+      showStatus(transport ? transport.errorMessage(error) : "Wysyłka formularza wymaga dokończenia konfiguracji. Skorzystaj z danych kontaktowych powyżej.", true);
       status.focus();
     } finally {
       inFlight = false;
       form.removeAttribute("aria-busy");
-      button.disabled = previewValidated || accepted;
-      buttonLabel.textContent = accepted ? "Wiadomość przyjęta" : previewValidated ? "Formularz sprawdzony" : "Wyślij wiadomość";
+      button.disabled = accepted;
+      buttonLabel.textContent = accepted ? "Wiadomość przyjęta" : "Wyślij wiadomość";
     }
   });
 
   for (const field of fields) {
     field.addEventListener("input", () => {
-      if (previewValidated) {
-        previewValidated = false;
-        button.disabled = false;
-        buttonLabel.textContent = "Wyślij wiadomość";
-      }
       if (!inFlight) showStatus("");
       // Only clear a previously reported error when the corrected value is valid.
       if (attempted && field.getAttribute("aria-invalid") === "true" && !validationMessage(field)) {
@@ -246,6 +212,11 @@
   }
 
   // Enhance only after listeners exist. Without JS, the disabled button fails closed.
+  const configurationNote = document.getElementById("ct-preview-note");
+  if (configurationNote && transport?.isConfigured(delivery.endpoint)) {
+    configurationNote.hidden = true;
+    form.setAttribute("aria-describedby", "ct-required-note");
+  }
   form.noValidate = true;
   button.disabled = false;
 })();
