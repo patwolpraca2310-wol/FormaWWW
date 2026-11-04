@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
 const transportSource=readFileSync(new URL('../../js/contact-transport.js',import.meta.url),'utf8');
-const mainSource=readFileSync(new URL('../../js/main.js',import.meta.url),'utf8');
+const mainSource=readFileSync(new URL('../../js/contact-form.js',import.meta.url),'utf8');
 const endpoint='https://formawww-contact.example.workers.dev/contact';
 function transport(fetch) {
   const window={setTimeout,clearTimeout};
