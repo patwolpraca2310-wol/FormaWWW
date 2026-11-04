@@ -26,7 +26,6 @@
     const requiredMessages = {
       service: "Wybierz usługę lub opcję „Nie wiem jeszcze czego potrzebuję”.",
       name: "Podaj swoje imię.",
-      company: "Podaj nazwę firmy.",
       email: "Podaj adres e-mail, na który mogę odpowiedzieć.",
       message: "Napisz kilka słów o tym, czego potrzebuje Twoja firma."
     };

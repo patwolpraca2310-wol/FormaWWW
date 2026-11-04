@@ -187,3 +187,12 @@ test('retry after definite rejection preserves exact Resend idempotency key and 
   assert.equal(requests[0].headers['Idempotency-Key'],requests[1].headers['Idempotency-Key']);
   assert.equal(requests[0].body,requests[1].body);
 });
+
+for (const value of ['', '   ', undefined]) test(`optional company accepts ${JSON.stringify(value)} and deduplicates`,async()=>{
+  const f=fixture();const payload={...valid,company:value};if(value===undefined)delete payload.company;
+  assert.equal((await f.send(payload)).status,200);assert.equal(f.calls.length,1);
+  assert.equal((await f.send({...valid,company:''})).status,200);assert.equal(f.calls.length,1);
+});
+for (const [value,status] of [[null,400],[123,400],['x'.repeat(161),422],['bad\r\nheader',422]]) test(`optional company rejects unsafe value ${JSON.stringify(value)}`,async()=>{
+  const f=fixture();assert.equal((await f.send({...valid,company:value})).status,status);assert.equal(f.calls.length,0);
+});

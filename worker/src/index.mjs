@@ -27,7 +27,7 @@ export function validate(payload) {
     if (value.length>max || UNSAFE.test(value) || (key!=='message' && /[\r\n\t]/.test(value))) errors[key]='Sprawdź treść i długość tego pola.';
   }
   if (data.fax_number || errors.fax_number) throw new HttpError(400,'spam_rejected');
-  for (const key of ['service','name','company','email','message']) if (!data[key]) errors[key]='Uzupełnij wymagane pole.';
+  for (const key of ['service','name','email','message']) if (!data[key]) errors[key]='Uzupełnij wymagane pole.';
   if (!Object.hasOwn(SERVICES,data.service)) errors.service='Wybierz usługę z listy.';
   if (!/\p{L}/u.test(data.name)) errors.name='Podaj poprawne imię.';
   if (!EMAIL_PATTERN.test(data.email) || data.email.includes('..')) errors.email='Podaj poprawny adres e-mail.';

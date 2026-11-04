@@ -52,7 +52,7 @@ function controller(send) {
     addEventListener(k,v){(this.events??={})[k]=v;},focus(){this.focused=true;},append(x){this.children.push(x);},replaceChildren(){this.children=[];},get childElementCount(){return this.children.length;}});
   const values={service:'new-website',website:'',name:'Anna',company:'Firma',email:'anna@example.com',phone:'',message:'Proszę o kontakt w sprawie strony.',fax_number:''};
   const fields=Object.fromEntries(Object.entries(values).map(([name,value])=>{
-    const field=Object.assign(el(),{id:'ct-'+name,name,value,required:!['phone','website','fax_number'].includes(name),maxLength:5000,minLength:name==='message'?10:0,validity:{typeMismatch:false}});
+    const field=Object.assign(el(),{id:'ct-'+name,name,value,required:!['phone','website','fax_number','company'].includes(name),maxLength:5000,minLength:name==='message'?10:0,validity:{typeMismatch:false}});
     hints.set(field.id+'-error',el());return [name,field];
   }));
   const button=el(),label=el(),status=el(),summary=el(),list=el(),note=el();
@@ -81,4 +81,22 @@ test('controller renders server validation errors with focus and no data loss',a
 test('short message and honeypot are stopped by the frontend',async()=>{
   let calls=0;const c=controller(async()=>{calls++;});c.fields.message.value='abc';await c.submit();assert.equal(calls,0);
   c.fields.message.value='Prawidłowa wiadomość';c.fields.fax_number.value='spam';await c.submit();assert.equal(calls,0);
+});
+
+test('controller accepts blank company without inventing a value and preserves success redirect',async()=>{
+  let payload;const c=controller(async(data)=>{payload=data;return {mode:'accepted'};});
+  c.fields.company.value='   ';await c.submit();
+  assert.equal(c.fields.company.getAttribute('aria-invalid'),null);
+  assert.equal(payload.company,'');assert.deepEqual(c.redirects,['dziekujemy.html']);
+});
+test('company markup is optional, labeled and retains length validation',()=>{
+  const markup=readFileSync(new URL('../../kontakt.html',import.meta.url),'utf8');
+  const input=markup.match(/<input[^>]*id="ct-company"[^>]*>/)[0];
+  assert.doesNotMatch(input,/\srequired(?:\s|>)/);assert.doesNotMatch(input,/aria-required="true"/);
+  assert.match(input,/autocomplete="organization"/);assert.match(input,/maxlength="160"/);
+  assert.match(markup,/<label for="ct-company">Nazwa firmy <span>\(opcjonalnie\)<\/span><\/label>/);
+});
+test('optional company still rejects excessive length before transport',async()=>{
+  let calls=0;const c=controller(async()=>{calls++;});c.fields.company.maxLength=160;c.fields.company.value='x'.repeat(161);
+  await c.submit();assert.equal(calls,0);assert.equal(c.fields.company.getAttribute('aria-invalid'),'true');
 });
