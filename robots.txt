@@ -1,5 +1,4 @@
-# WERSJA ROBOCZA — do przeglądu przed publikacją.
-# Tymczasowa blokada indeksowania projektu w przygotowaniu.
-# Nie jest zabezpieczeniem dostępu do plików.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://formawww.pl/sitemap.xml
